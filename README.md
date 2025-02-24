@@ -25,7 +25,7 @@ DevOrbit is the ultimate hub for developers to showcase their skills, connect wi
 * ***Accept/Reject Requests*** - Option to accept or decline project.
 * ***Project Showcase*** - Developers can list their projects and invite collaboration
 
-## Direct & Community Chat
+### Direct & Community Chat
 * ***One-on-one Chat*** - Private messages between developers.
 * ***Community Chat*** - Public discussion space for sharing ideas.
 * ***Group Chats*** - Developers can create topic-based groups.
@@ -45,13 +45,32 @@ DevOrbit is the ultimate hub for developers to showcase their skills, connect wi
 
 <br>
 
-## *Teach Stacks*
+## *Tech Stacks*
 * ***Frontend*** - React JS, Redux JS, Chakra UI, Typescript
 * ***Backend*** - Node JS, Express, Javascript
 * ***Database*** - MongoDB, Redis
 * ***Authentication*** - JWT(JSON Web Tokens) with bcrypt for hashing passwords
 * ***File Uploads*** - Multer for handling file uploads
 * ***Real-time Features*** - Websockets (with socket.io)
+
+<br>
+
+## *Interview Preparation Module*
+* ***Mock Interviews*** – Simulate real interview experiences.
+* ***Coding Challenges*** – Practice DSA & system design problems.
+* ***Company*** -Specific Questions – Filter by FAANG, startups, etc.
+* ***Live Coding Rooms*** – Pair-programming with peers or mentors.
+* ***AI Interview Feedback*** – Analyze responses and suggest improvements.
+* ***Resume & Portfolio Reviews*** – Get feedback from experienced developers.
+
+<br> 
+
+## *Build Your First Project* 
+* Explain what the project is about and what technologies will be used.
+* Provide installation guides for required tools (Node.js, VS Code, Git, etc.).
+* Set up the initial project structure with a basic README file.
+
+***💡 Example: "We are building a To-Do App using React and Firebase. First, install Node.js and create a new React project.***
 
 
  
