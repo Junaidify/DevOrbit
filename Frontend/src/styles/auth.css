@@ -1,0 +1,86 @@
+/* * {
+  background-color: red;
+} */
+
+#auth {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 70%;
+  height: 80dvh;
+  margin: 10dvh auto;
+  border: 2px solid black;
+}
+
+.auth_left {
+  width: 80%;
+  margin: 5dvh auto;
+}
+
+#auth_container{
+    display: flex;
+    flex-direction: column;
+    margin : 5dvh auto; 
+    
+
+
+}
+
+.auth_welcome {
+  text-align: center;
+  font-size: 6dvh;
+}
+
+
+
+.auth_account_btn {
+  border: none;
+  background-color: none;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.auth_google {
+  font-size: 2.5dvh;
+  font-weight: bold;
+  padding: 1.2dvh;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: black;
+  color: white;
+}
+
+.auth_or{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    
+}
+
+.auth_or::before,
+.auth_or::after {
+  content: "";
+  border-bottom: 2px solid red;
+  margin: 5px;
+  flex: 1;
+}
+
+
+#auth_input{
+    display: flex;
+    flex-direction: column;    
+}
+
+
+/* ------------ Right image section of authentication page ------------- */
+
+.auth_right {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.auth_right > img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
