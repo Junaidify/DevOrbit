@@ -23,10 +23,18 @@ const Auth = () => {
           <div id="auth_input">
             <input type="text" placeholder="Email" />
             <input type="text" placeholder="Password" />
-            <button>Log in</button>
           </div>
 
-          <p className="auth_forget_btn">Forget password ?</p>
+          <div id="auth_terms_conditions">
+            <input type="checkbox" />
+            <p>
+              By clicking this, you have read and acknowledged terms&conditions.{" "}
+            </p>
+          </div>
+
+          <button className="login_btn">Log in</button>
+
+          <button className="auth_forget_btn">Forget password ?</button>
         </div>
       </div>
 
