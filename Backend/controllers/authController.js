@@ -1,4 +1,4 @@
-const Auth = require("../models/signInSchema");
+const Auth = require("../models/auth");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
@@ -37,17 +37,22 @@ exports.loginUser = async (req, res) => {
 
     const comparePass = await bcrypt.compare(password, user.password);
     if (!comparePass)
-      return res.status(401).json({ message: "Invalid credientials" });
+      return res.status(401).json({ message: "Invalid credientials" }).redirect('/login');
 
     const token = jwt.sign(
       { id: user._id, role: user.role },
-      process.env.JWT_SECRET,
+      process.env.JWT_SECRET_KEY,
       {
-        expiresIn: "1h",
+        expiresIn: "1d",
       }
     );
 
-    return res.status(200).json({ message: "login successfully" , token});
+    res.cookie('token', token, {
+      httpOnly : true, 
+      maxAge : 24 * 60 * 60 * 1000
+    });
+
+    return res.status(200).json({ message: "login successfully"});
   } catch (err) {
     console.error("Couldn't login user", err.message);
     return res.status(500).json({ message: "Server error" });
