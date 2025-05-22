@@ -8,6 +8,8 @@ const authSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
+    match : /^[^\s@]+@[^\s@]+\.[^\s@]+$/, 
+    unique : true
   },
   username: {
     type: String,
@@ -19,7 +21,7 @@ const authSchema = new mongoose.Schema({
     required: true,
   },
   phone: {
-    type: Number,
+    type: String,
     required: true,
   },
   role : {
