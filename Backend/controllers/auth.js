@@ -3,11 +3,11 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { isValidEmail, isValidPassword } = require("../utils/verifyhttp");
 
-exports.registerUser =  async (req, res) => {
+exports.registerUser = async (req, res) => {
   try {
-    const {name, username, role, password, email, phone} = req.body;
+    const { name, username, role, password, email, phone } = req.body;
 
-    const isUserExist = await Auth.findOne({username });
+    const isUserExist = await Auth.findOne({ username });
     if (isUserExist)
       return res.status(400).json({ message: "User already exist" });
 
@@ -19,12 +19,20 @@ exports.registerUser =  async (req, res) => {
       return res.status(400).json({ message: "Invalid password" });
     }
 
-    if(role === 'admin' && req.user.role !== 'admin'){
-      return res.status(403).json({'message': 'Sorry only admin can create another admin'});
+    if (role === "admin" && req.user.role !== "admin") {
+      return res
+        .status(403)
+        .json({ message: "Sorry only admin can create another admin" });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    const user = await Auth.create({name, username, phone, password : hashedPassword, role : role ? 'admin' : 'user'})
+    const user = await Auth.create({
+      name,
+      username,
+      phone,
+      password: hashedPassword,
+      role: role === "admin" ? "admin" : "user",
+    });
 
     return res
       .status(201)
