@@ -1,8 +1,8 @@
-const router = require('express').Router();
-const {registerUser, loginUser} = require('../controllers/auth');
-const authorize = require('../middlewares/authorize')
+const router = require("express").Router();
+const { registerUser, loginUser } = require("../controllers/auth");
+const authorize = require("../middlewares/authorize");
 
-router.post('/signin', authorize, registerUser);
-router.post('/login', loginUser);
+router.post("/signin", registerUser);
+router.post("/login", loginUser);
 
-module.exports = router; 
+module.exports = router;

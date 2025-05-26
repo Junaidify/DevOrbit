@@ -5,7 +5,8 @@ const { isValidEmail, isValidPassword } = require("../utils/verifyhttp");
 
 exports.registerUser = async (req, res) => {
   try {
-    const { name, username, role, password, email, phone } = req.body;
+    const { name, username, password, email, phone } = req.body;
+    console.log(req.body)
 
     const isUserExist = await Auth.findOne({ username });
     if (isUserExist)
@@ -19,19 +20,27 @@ exports.registerUser = async (req, res) => {
       return res.status(400).json({ message: "Invalid password" });
     }
 
-    if (role === "admin" && req.user.role !== "admin") {
-      return res
-        .status(403)
-        .json({ message: "Sorry only admin can create another admin" });
-    }
-
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = await Auth.create({
       name,
       username,
+      email,
       phone,
       password: hashedPassword,
-      role: role === "admin" ? "admin" : "user",
+    });
+
+    const payload = {
+      id: user._id,
+      username: user.username,
+    };
+
+    const token = jwt.sign(payload, process.env.JWT_SECRET_KEY, {
+      expiresIn: "1h",
+    });
+    res.cookie("token", token, {
+      httpOnly: true,
+      sameSite: "Strict",
+      maxAge: 3600000,
     });
 
     return res
