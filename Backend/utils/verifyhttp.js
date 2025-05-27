@@ -3,7 +3,7 @@ export function isValidEmail(email) {
   return regex.test(email);
 }
 
-export function isValidPassword(password) {
-  const regex = /^[a-zA-Z0-9._-]{3,20}$/;
-  return regex.test(username);
-}
+// export function isValidPassword(password) {
+//   const regex = /^[a-zA-Z0-9._-]{3,20}$/;
+//   return regex.test(username);
+// }
