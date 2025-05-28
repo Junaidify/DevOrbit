@@ -1,20 +1,20 @@
 const jwt = require("jsonwebtoken");
 
-function authorize(req, res, next) {
-  const token = req.cookies.token || req.headers.authorizeAdmin?.split(" ")[1];
+function authorize(roles = []) {
+  return (req, res, next) => {
 
-  if (!token) {
-    return res.status(400).json({ message: "Unauthorized" });
-  }
+    if(!eq.user){
+      return res.status(401).json({'message': 'Unauthorized user'});
+    }
 
-  try {
-    const decode = jwt.verify(token, process.env.SECRET_KEY);
-    req.user = decode;
+    if(roles.length && !roles.includes(req.user.role)){
+      return res.status(403).json({'message': 'Forbidden access'});
+    }
+
     next();
-  } catch (err) {
-    console.error("Error : In authorize middle", err);
-    return res.status(400).json({ message: "Invalid token" });
-  }
+
+  } 
+
 }
 
-module.exports = authorize;
+module.exports = {authorize};

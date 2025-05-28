@@ -31,18 +31,19 @@ exports.registerUser = async (req, res) => {
 
     const payload = {
       id: user._id,
-      username: user.username,
-      role : user.role || "user", // Default role to 'user' if not specified
+      role: user.role || "user", // Default role to 'user' if not specified
     };
 
     const token = jwt.sign(payload, process.env.JWT_SECRET_KEY, {
       expiresIn: "1h",
+      iat: new Date(1748448583 * 1000).toLocaleString(),
     });
+
     res.cookie("token", token, {
       httpOnly: true,
       sameSite: "Lax",
       maxAge: 3600000,
-      secure : false
+      secure: false,
     });
 
     return res
